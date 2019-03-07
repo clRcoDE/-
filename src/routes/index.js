@@ -48,4 +48,4 @@ const AppSwitchNavigator = createSwitchNavigator(
 )
 
 
-export default createAppContainer({AppSwitchNavigator})
+export default createAppContainer(AppSwitchNavigator)

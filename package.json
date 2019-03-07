@@ -7,9 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "json-server": "^0.14.2",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-svg": "^9.2.4",
     "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^3.3.2",
     "react-redux": "^6.0.1",

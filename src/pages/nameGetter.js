@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View , TextInput , AsyncStorage } from 'react-native'
 
 export default class nameGetter extends Component {
   render() {
