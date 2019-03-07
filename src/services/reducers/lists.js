@@ -23,7 +23,7 @@
 
 import { ADD_USER , GET_USER_DATA ,  ADD_LIST , DELETE_LIST } from '../types'
 
-const lists =(state = initialState , action )=>{
+const lists =(state = {} , action )=>{
 
     switch(action.type){
         case ADD_USER:
