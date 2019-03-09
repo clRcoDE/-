@@ -1,14 +1,14 @@
 
 
-
-
 import {combineReducers} from 'redux'
 
-import todos from './todos'
-import lists from './lists'
-import visibilityFilter from './visibilityFilter'
-export default  combineReducers({
-    todos,
-    lists,
-    visibilityFilter
+
+
+import {data} from './data'
+import {user} from './user'
+
+
+export default combineReducers({
+    data,
+    user
 })

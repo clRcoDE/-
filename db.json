@@ -1,0 +1,18 @@
+{
+    "posts": [
+      { "id": 1, "title": "j-server", "author": "typicode" },
+      { "id": 2, "title": "s-server", "author": "typicode" },
+      { "id": 3, "title": "n-server", "author": "typicode" }
+    ],
+    "comments": [
+      { "id": 1, "body": "jjj comment", "postId": 1 },
+      { "id": 2, "body": "sss comment", "postId": 2 },
+      { "id": 3, "body": "nnn comment", "postId": 3 }
+    ],
+    "profiles":[
+         { "id": 1,"name": "type" ,"commentId":1 },
+         { "id": 2,"name": "i" ,"commentId":2 },
+         { "id": 3,"name": "code" ,"commentId":3 }
+        
+        ]
+  }
