@@ -1,11 +1,5 @@
 
 import {
-  REQUEST_BEGINS,
-  REQUEST_SUCCESS,
-  REQUEST_FAILED,
-  SET_USER,
-  GET_DEFAULT,
-  POST_NEW_USER,
   SET_NAME,
   SET_DEFAULT_DATA,
   SET_VISIBILITY_FILTER,
@@ -16,81 +10,93 @@ import {
   TOGGLE_TODO,
 } from '../types'
 
-import { Alert } from 'react-native'
+// import { Alert } from 'react-native'
 
 
+//**********************************************  ALL AVAILABLE FILTERS  ************************************************** */
 
 
-
-const requestBegins = () => (
-  {
-    type: REQUEST_BEGINS,
-    loading: true
-  }
-)
-
-
-const requestSuccess = () => (
-  {
-    type: REQUEST_SUCCESS,
-    loading: false
-  }
-)
-
-const requestFailed = () => (
-  {
-    type: REQUEST_FAILED,
-    loading: false
-  }
-)
-
-
-
-const getDefaultData = () => {
-  return fetch(`http://10.0.2.2:3000/default`)
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      }
-    })
-    .then(result => result)
-    .catch(e => Alert.alert(`get default error ${e} `))
+export const VisibilityFilters = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
 
-const postNewUser = (username, data) => {
-  fetch(`http://10.0.2.2:3000/user`, {
-    method: 'POST',
-    headers: { "Content-Type": "application/json" },
-    body: { "username": username, ...data }
 
 
-  }).catch(e => Alert.alert(`post default error ${e}`))
-}
 
 
-const requestNewCategory = (categoryName, username) => {
-  this.cacheData = null
-  fetch(`http://10.0.2.2:3000/user/username=${username}/`)
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      }
-    })
-    .then(result => { this.cacheData = result[0] })
-    .catch(e => Alert.alert(`cache error ${e}`))
+// const requestBegins = () => (
+//   {
+//     type: REQUEST_BEGINS,
+//     loading: true
+//   }
+// )
 
 
-  this.cacheData = {
-    ...this.cacheData,
-    listCategories: [
-      ...this.cacheData.listCategories,
-      {
-        title: `${categoryName}`,
-        todos: []
-      }
-    ]
-  }
+// const requestSuccess = () => (
+//   {
+//     type: REQUEST_SUCCESS,
+//     loading: false
+//   }
+// )
+
+// const requestFailed = () => (
+//   {
+//     type: REQUEST_FAILED,
+//     loading: false
+//   }
+// )
+
+//***************************************  RESTful [ REQUEST / RESPONSE ] handlers  ***************************************/
+
+
+// const getdefaultLists = () => {
+//   return fetch(`http://10.0.2.2:3000/default`)
+//     .then(response => {
+//       if (response.ok) {
+//         return response.json()
+//       }
+//     })
+//     .then(result => result)
+//     .catch(e => Alert.alert(`get default error ${e} `))
+// }
+
+
+// const postNewUser = (username, data) => {
+//   fetch(`http://10.0.2.2:3000/user`, {
+//     method: 'POST',
+//     headers: { "Content-Type": "application/json" },
+//     body: { "username": username, ...data }
+
+
+//   }).catch(e => Alert.alert(`post default error ${e}`))
+// }
+
+
+// const requestNewCategory = (categoryName, username) => {
+//   this.cacheData = null
+//   fetch(`http://10.0.2.2:3000/user/username=${username}/`)
+//     .then(response => {
+//       if (response.ok) {
+//         return response.json()
+//       }
+//     })
+//     .then(result => { this.cacheData = result[0] })
+//     .catch(e => Alert.alert(`cache error ${e}`))
+
+
+//   this.cacheData = {
+//     ...this.cacheData,
+//     listCategories: [
+//       ...this.cacheData.listCategories,
+//       {
+//         title: `${categoryName}`,
+//         #todos: []
+//       }
+//     ]
+//   }
 
  
 
@@ -100,42 +106,47 @@ const requestNewCategory = (categoryName, username) => {
 
 
 
-}
+// }
 
-const requestDeleteCategory = () => {
-  fetch()
-    .then()
-    .then()
-    .catch()
-}
+// const requestDeleteCategory = () => {
+//   fetch()
+//     .then()
+//     .then()
+//     .catch()
+// }
 
-const requestChangeCategoryFilter = () => {
-  fetch()
-    .then()
-    .then()
-    .catch()
-}
+// const requestChangeCategoryFilter = () => {
+//   fetch()
+//     .then()
+//     .then()
+//     .catch()
+// }
 
-const requestAddNewTodo = () => {
-  fetch()
-    .then()
-    .then()
-    .catch()
-}
+// const requestAddNewTodo = () => {
+//   fetch()
+//     .then()
+//     .then()
+//     .catch()
+// }
 
-const requestToggleTodo = () => {
-  fetch()
-    .then()
-    .then()
-    .catch()
-}
+// const requestToggleTodo = () => {
+//   fetch()
+//     .then()
+//     .then()
+//     .catch()
+// }
 
-const requestDeleteTodo = () => {
-  fetch()
-    .then()
-    .then()
-    .catch()
-}
+// const requestDeleteTodo = () => {
+//   fetch()
+//     .then()
+//     .then()
+//     .catch()
+// }
+
+
+
+
+//**********************************************    ACTION CREATORS    ********************************************** */
 
 
 
@@ -154,62 +165,73 @@ const setInitialData = (data) => {
 }
 
 
-const deleteTodoDispatcher = (todoIndex) => (
+const deleteTodoDispatcher = (listTitle,todoIndex) => (
   {
     type: DELETE_TODO,
+    listTitle,
     todoIndex
   }
 )
 
-const toggleTodoDispatcher = (todoIndex) => (
+const toggleTodoDispatcher = (listTitle,todoIndex) => (
   {
     type: TOGGLE_TODO,
+    listTitle,
     todoIndex
   }
 )
 
-const addNewTodoDispatcher = (newTodo) => (
+const addNewTodoDispatcher = (listTitle,newTodo) => (
 
   {
     type: ADD_TODO,
+    listTitle,
     newTodo
 
   }
 )
 
-const changeCategoryFilterDispatcher = (filter) => (
+const changeCategoryFilterDispatcher = (listTitle,filter) => (
   {
     type: SET_VISIBILITY_FILTER,
+    listTitle,
     filter
+
   }
 )
 
-const deleteCategoryDispatcher = (categoryIndex) => (
-  {
-
-    type: ADD_LIST_CATEGORY,
-    categoryIndex
-  }
-)
-
-const newCategoryDispatcher = (newCategory) => (
+const deleteCategoryDispatcher = (listIndex) => (
   {
 
     type: DELETE_LIST_CATEGORY,
-    newCategory
+    listIndex
   }
 )
 
+const newCategoryDispatcher = (newList) => (
+  {
+
+    type:ADD_LIST_CATEGORY ,
+    newList
+  }
+)
+
+
+
+
+//******************************************  THUNKS ( do asynchronous tasks )   *********************************************/
+
+
 export const deleteTodo = async () => {
   return dispatch => {
-    await requestDeleteTodo()
+    // await requestDeleteTodo()
     dispatch(deleteTodoDispatcher())
   }
 }
 
 export const toggleTodo = async () => {
   return dispatch => {
-    await requestToggleTodo()
+    // await requestToggleTodo()
     dispatch(toggleTodoDispatcher())
   }
 }
@@ -217,7 +239,7 @@ export const toggleTodo = async () => {
 export const addTodo = async () => {
 
   return dispatch => {
-    await requestAddNewTodo()
+    // await requestAddNewTodo()
     dispatch(addNewTodoDispatcher())
   }
 }
@@ -228,7 +250,7 @@ export const addTodo = async () => {
 export const setVisibilityFilter = async () => {
 
   return dispatch => {
-    await requestChangeCategoryFilter()
+    // await requestChangeCategoryFilter()
     dispatch(changeCategoryFilterDispatcher())
   }
 
@@ -237,7 +259,7 @@ export const setVisibilityFilter = async () => {
 
 export const deleteCategoryList = async () => {
   return dispatch => {
-    await requestDeleteCategory()
+    // await requestDeleteCategory()
     dispatch(deleteCategoryDispatcher())
   }
 }
@@ -245,20 +267,66 @@ export const deleteCategoryList = async () => {
 
 export const addCategoryList = async (newCategoryName) => {
   return dispatch => {
-    await requestNewCategory(newCategoryName)
+    // await requestNewCategory(newCategoryName)
     dispatch(newCategoryDispatcher())
   }
 
 
 }
 
+//*************************************************  FIRST THUNK    ******************************************************/
+
+
 export const setUser = async (usernameInput) => {
 
   return dispatch => {
-    const defaultData = await getDefaultData() // IO/network need to wait for it
-    await postNewUser(usernameInput, defaultData) // IO/network 
-    await dispatch(setName(usernameInput)) ///reducer
-    await dispatch(setInitialData(defaultData)) ///reducer
+
+
+    // const defaultLists = await getdefaultLists() // IO/network need to wait for it
+    // await postNewUser(usernameInput, defaultLists) // IO/network 
+
+const defaultLists ={
+  
+  todoLists:[
+    {
+      title:"Today",
+      filter:VisibilityFilters.SHOW_COMPLETED,
+      id:1,
+      todos:[
+        {
+          title:'buy milks',
+          isCompleted:false,
+          id:1
+
+        },
+        {
+          title:'go to gym',
+          isCompleted:true,
+          id:2
+        }
+      ]
+    },
+    {
+      title:"home",
+      filter:VisibilityFilters.SHOW_ALL,
+      id:2,
+      todos:[
+        {
+          title:'take the children',
+          isCompleted:false,
+          id:1
+        },
+        {
+          title:'frie bakens',
+          isCompleted:false,
+          id:2
+        }
+      ]
+    }
+  ]
+}
+     dispatch(setName(usernameInput)) ///reducer
+     dispatch(setInitialData(defaultLists)) ///reducer
 
   }
 }
@@ -267,10 +335,5 @@ export const setUser = async (usernameInput) => {
 
 
 
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
 
 

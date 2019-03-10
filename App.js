@@ -10,9 +10,18 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import AppContainer from './src/routes'
+import {createStore ,applyMiddleware} from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import reducer from './src/services/reducers/index'
+export const store = createStore(reducer , applyMiddleware(thunk))
 export default class App extends Component{
   render() {
-    return (<AppContainer/>);
+    
+    return (
+    <Provider store={store}>
+    <AppContainer/>
+    </Provider>);
   }
 }
 

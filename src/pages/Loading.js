@@ -9,7 +9,7 @@ export default class Loading extends Component {
     try {
       const firstRun = await AsyncStorage.getItem('RUN')
       if (firstRun !== null) {
-        navigation.navigate('Home')
+        navigation.navigate('nameGetter')
 
       } else {
         navigation.navigate('nameGetter')
@@ -36,10 +36,10 @@ export default class Loading extends Component {
         <View style={styles.wrapper} >
 
           <View style={styles.svgWrapper}>
-            <SvgComponent width="125" height="125" />
+            <SvgComponent width="100" height="100" />
           </View>
           <View style={styles.introTextWrapper}>
-            <Text style={styles.introText} >یادمه</Text>
+            <Text style={styles.introText} >یادمه!</Text>
           </View>
           <View style={styles.loadingCircle}>
             <ActivityIndicator size={'large'} color={"#fff"} animating={true} />
@@ -64,8 +64,9 @@ const styles = StyleSheet.create({
   },
   introText: {
     color: '#fff',
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: '600',
-    letterSpacing: 2
+    letterSpacing: 1,
+    writingDirection:'rtl'
   }
 })

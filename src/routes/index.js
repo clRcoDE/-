@@ -25,9 +25,9 @@ const HomeDrawerStack = createDrawerNavigator(
     {
         About:About,
         Themes:Themes,
-        Lists:ListsStack
+        ListsRoute:ListsStack
     },{
-        initialRouteName:'Lists'
+        initialRouteName:'ListsRoute'
     }
 )
 

@@ -4,17 +4,17 @@ import {
 } from '../types'
 
 
-const user ={
-    name:null
+const initialUser ={
+    username:null
 }
 
 
-export const data =( state = user , action )=>{
+export const  user = ( state = initialUser , action ) =>{
 
     switch ( action.type ){
         case SET_NAME:
         return{
-            name:action.username
+            username:action.username
         }
         default:
         return state

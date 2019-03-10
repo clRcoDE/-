@@ -8,7 +8,9 @@ import {data} from './data'
 import {user} from './user'
 
 
-export default combineReducers({
-    data,
-    user
+const rootReducer =  combineReducers({
+    dataReducer:data,
+    userReducer:user
 })
+
+export default  rootReducer

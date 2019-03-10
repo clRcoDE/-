@@ -9,10 +9,10 @@ import {
 } from '../types'
 
 const initialState = {
-    listCategories: []
+    todoLists: []
 }
 
-export const user = (state = initialState, action) => {
+export const data = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -22,26 +22,25 @@ export const user = (state = initialState, action) => {
 
         case ADD_LIST_CATEGORY:
             return {
-                ...state,
-                listCategories: [
-                    ...state.listCategories,
-                    action.newCategory
+               
+                todoLists: [
+                    ...state.todoLists,
+                    action.newList
                 ]
             }
 
 
         case DELETE_LIST_CATEGORY:
             return {
-                ...state,
-                listCategories: [
-                    ...state.listCategories.slice(0, action.categoryIndex),
-                    ...state.listCategories.slice(action.categoryIndex + 1)
+                todoLists: [
+                    ...state.todoLists.slice(0, action.listIndex),
+                    ...state.todoLists.slice(action.listIndex + 1)
                 ]
             }
 
         case ADD_TODO:
-            const newListCategoriesAdd = state.listCategories.map((item, index) => {
-                if (item.title === action.categoryTitle) {
+            return state.todoLists.map((item, index) => {
+                if (item.title === action.listTitle) {
                     return {
                         ...item,
                         todos: [
@@ -53,16 +52,12 @@ export const user = (state = initialState, action) => {
                     return item
                 }
             })
-            return {
-                ...state,
-                newListCategoriesAdd
-            }
 
         case DELETE_TODO:
 
-            const newListCategoriesDel = state.listCategories.map((item, index) => {
+            return state.todoLists.map((item, index) => {
 
-                if (item.title === action.categoryTitle) {
+                if (item.title === action.listTitle) {
 
                     return {
                         ...item,
@@ -77,16 +72,12 @@ export const user = (state = initialState, action) => {
                 }
             })
 
-            return {
-                ...state,
-                newListCategoriesDel
-            }
-
+            
 
         case TOGGLE_TODO:
-            const newListCategoriesTog = state.listCategories.map((item, index) => {
+            return state.todoLists.map((item, index) => {
 
-                if (item.title === action.categoryTitle) {
+                if (item.title === action.listTitle) {
                     return {
                         ...item,
                         todos: [
@@ -102,15 +93,12 @@ export const user = (state = initialState, action) => {
             })
 
 
-            return {
-                ...state,
-                newListCategoriesTog
-            }
+           
 
 
         case SET_VISIBILITY_FILTER:
-            const newListCategoriesFilter = state.listCategories.map((item, index) => {
-                if (item.title === action.categoryTitle) {
+            return state.todoLists.map((item, index) => {
+                if (item.title === action.listTitle) {
                     return {
                         ...item,
                         filter: action.filter
@@ -120,10 +108,6 @@ export const user = (state = initialState, action) => {
                 }
             })
 
-            return {
-                ...state,
-                newListCategoriesFilter
-            }
 
         default:
             return state

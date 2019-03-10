@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
+import {connect} from 'react-redux'
+ class Lists extends Component {
 
-export default class Lists extends Component {
+  static navigationOptions=({navigation})=>{
+
+    return{
+
+      headerTitle:navigation.getParam('username','empty')
+    }
+  }
   render() {
     return (
       <View style={styles.container} >
-        <Text> textInComponent </Text>
+        <Text> Lists </Text>
       </View>
     )
   }
@@ -20,3 +28,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
+const mapStateToProps =(state)=>{
+  
+  return{
+    todoLists : state.dataReducer
+  }
+}
+export default connect(mapStateToProps)(Lists)
