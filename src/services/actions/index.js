@@ -277,7 +277,7 @@ export const addCategoryList = async (newCategoryName) => {
 //*************************************************  FIRST THUNK    ******************************************************/
 
 
-export const setUser = async (usernameInput) => {
+export const setUser = (usernameInput) => {
 
   return dispatch => {
 

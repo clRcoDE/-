@@ -16,6 +16,9 @@ const ListsStack = createStackNavigator(
     {
         ListsScreen:Lists,
         TodoList:TodoList
+    },
+    {
+        // headerMode:'none'
     }
 )
 
@@ -27,7 +30,8 @@ const HomeDrawerStack = createDrawerNavigator(
         Themes:Themes,
         ListsRoute:ListsStack
     },{
-        initialRouteName:'ListsRoute'
+        initialRouteName:'ListsRoute',
+        drawerPosition:'right'
     }
 )
 
