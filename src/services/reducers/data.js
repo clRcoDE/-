@@ -8,9 +8,7 @@ import {
     TOGGLE_TODO,
 } from '../types'
 
-const initialState = {
-    todoLists: []
-}
+const initialState = []
 
 export const data = (state = initialState, action) => {
 
@@ -21,13 +19,14 @@ export const data = (state = initialState, action) => {
 
 
         case ADD_LIST_CATEGORY:
-            return {
-               
-                todoLists: [
-                    ...state.todoLists,
-                    action.newList
+            return [
+                    ...state,
+                    {
+                        title:action.newList,
+                        todos:[]
+                    }
                 ]
-            }
+            
 
 
         case DELETE_LIST_CATEGORY:
@@ -39,13 +38,17 @@ export const data = (state = initialState, action) => {
             }
 
         case ADD_TODO:
-            return state.todoLists.map((item, index) => {
+            return state.map((item) => {
                 if (item.title === action.listTitle) {
                     return {
                         ...item,
                         todos: [
                             ...item.todos,
-                            action.newTodo
+                            {
+                                title:action.newTodo,
+                                isCompleted:false,
+                                id:action.lastItem+1
+                              },
                         ]
                     }
                 } else {

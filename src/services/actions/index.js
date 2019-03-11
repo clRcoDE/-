@@ -181,12 +181,13 @@ const toggleTodoDispatcher = (listTitle,todoIndex) => (
   }
 )
 
-const addNewTodoDispatcher = (listTitle,newTodo) => (
+const addNewTodoDispatcher = (listTitle,newTodo,lastItem) => (
 
   {
     type: ADD_TODO,
     listTitle,
-    newTodo
+    newTodo,
+    lastItem
 
   }
 )
@@ -236,11 +237,11 @@ export const toggleTodo = async () => {
   }
 }
 
-export const addTodo = async () => {
+export const addTodo =  (listTitle,newTodo,lastItem) => {
 
   return dispatch => {
     // await requestAddNewTodo()
-    dispatch(addNewTodoDispatcher())
+    dispatch(addNewTodoDispatcher(listTitle,newTodo,lastItem))
   }
 }
 
@@ -265,10 +266,10 @@ export const deleteCategoryList = async () => {
 }
 
 
-export const addCategoryList = async (newCategoryName) => {
+export const addCategoryList =  (newList) => {
   return dispatch => {
     // await requestNewCategory(newCategoryName)
-    dispatch(newCategoryDispatcher())
+    dispatch(newCategoryDispatcher(newList))
   }
 
 
@@ -285,13 +286,32 @@ export const setUser = (usernameInput) => {
     // const defaultLists = await getdefaultLists() // IO/network need to wait for it
     // await postNewUser(usernameInput, defaultLists) // IO/network 
 
-const defaultLists ={
+const defaultLists =[
   
-  todoLists:[
+  
+    
+   
     {
-      title:"Today",
-      filter:VisibilityFilters.SHOW_COMPLETED,
+      title:"امروز",
+      filter:VisibilityFilters.SHOW_ALL,
       id:1,
+      todos:[
+        {
+          title:'take the children',
+          isCompleted:false,
+          id:1
+        },
+        {
+          title:'frie bakens',
+          isCompleted:false,
+          id:2
+        }
+      ]
+    },
+    {
+      title:"فردا",
+      filter:VisibilityFilters.SHOW_COMPLETED,
+      id:2,
       todos:[
         {
           title:'buy milks',
@@ -307,9 +327,9 @@ const defaultLists ={
       ]
     },
     {
-      title:"home",
+      title:"خونه",
       filter:VisibilityFilters.SHOW_ALL,
-      id:2,
+      id:3,
       todos:[
         {
           title:'take the children',
@@ -322,9 +342,28 @@ const defaultLists ={
           id:2
         }
       ]
-    }
+    },
+    {
+      title:"کاری",
+      filter:VisibilityFilters.SHOW_COMPLETED,
+      id:4,
+      todos:[
+        {
+          title:'buy milks',
+          isCompleted:false,
+          id:1
+
+        },
+        {
+          title:'go to gym',
+          isCompleted:true,
+          id:2
+        }
+      ]
+    },
+    
   ]
-}
+
      dispatch(setName(usernameInput)) ///reducer
      dispatch(setInitialData(defaultLists)) ///reducer
 

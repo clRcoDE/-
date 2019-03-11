@@ -18,7 +18,8 @@ const ListsStack = createStackNavigator(
         TodoList:TodoList
     },
     {
-        // headerMode:'none'
+        mode:'modal',
+        headerMode:'none'
     }
 )
 

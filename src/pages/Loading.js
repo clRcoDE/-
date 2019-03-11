@@ -27,7 +27,7 @@ export default class Loading extends Component {
 
   }
   componentDidMount() {
-    setTimeout(() => this.goto() , 1500 )
+    setTimeout(() => this.goto() , 50 )
   }
 
   render() {

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: 'grey',
+    backgroundColor: '#fff',
     justifyContent: 'center',
   },
   header: {
@@ -116,7 +116,7 @@ alignItems: 'center',
     width:150,
     borderRadius:10,
     borderWidth:1,
-    borderColor:'rgba(240,240,240,0.5)',
+    borderColor:'rgba(100,100,100,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   }
